@@ -22,7 +22,9 @@ requirements:
     - {{ compiler('c') }}
     - meson
     - ninja
-
+    - patch       # [not win]
+    - m2-patch    # [win]
+ 
 test:
   commands:
     - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
