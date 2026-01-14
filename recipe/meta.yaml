@@ -38,7 +38,7 @@ about:
     East is the lack of support for the Arabic and Hebrew alphabets. In order to
     have proper Arabic and Hebrew support, the bidi algorithm needs to be
     implemented. It is our hope that this library will stimulate more free
-    software in the Middle Eastern countries.
+    software in the Middle Eastern countries
   doc_url: https://github.com/fribidi/fribidi
   dev_url: https://github.com/fribidi/fribidi
 
