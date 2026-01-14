@@ -1,9 +1,16 @@
-meson builddir -Ddocs=false --prefix=$PREFIX -Ddefault_library=shared
+#!/usr/bin/env bash
+set -euo pipefail
+set -x
+
+meson builddir \
+    --prefix="${PREFIX}" \
+    -Ddefault_library=shared \
+    -Ddocs=false \
+    ${MESON_ARGS:-}
+
 cd builddir
 ninja
 ninja install
-
-set -x
 
 # stuff gets installed into lib64 when we only use lib for conda
 if [[ "$(uname -s)" =~ .*Linux.* ]]; then
