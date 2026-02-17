@@ -1,4 +1,4 @@
-meson builddir -Ddocs=false --prefix=$PREFIX -Ddefault_library=shared
+meson builddir -Ddocs=false ${MESON_ARGS} --prefix=$PREFIX -Ddefault_library=shared
 cd builddir
 ninja
 ninja install

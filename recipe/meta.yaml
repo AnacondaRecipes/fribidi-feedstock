@@ -1,5 +1,4 @@
-{% set version = "1.0.10" %}
-{% set sha256 = "7f1c687c7831499bcacae5e8675945a39bacbad16ecaa945e9454a32df653c01" %}
+{% set version = "1.0.16" %}
 
 package:
   name: fribidi
@@ -7,33 +6,27 @@ package:
 
 source:
   url: https://github.com/fribidi/fribidi/releases/download/v{{ version }}/fribidi-{{ version }}.tar.xz
-  sha256: {{ sha256 }}
-  patches:
-    - meson-rpaths.patch
+  sha256: 1b1cde5b235d40479e91be2f0e88a309e3214c8ab470ec8a2744d82a5a9ea05c
 
 build:
   number: 0
-  skip: true  # [win and vc<14]
   run_exports:
     - {{ pin_subpackage('fribidi') }}
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - meson
     - ninja
-    - patch       # [not win]
-    - m2-patch    # [win]
- 
+
 test:
   commands:
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
     - fribidi -h
 
 about:
   home: https://github.com/fribidi/fribidi
-  license: LGPL-2.1
+  license: LGPL-2.1-or-later
   license_file: COPYING
   summary: The Free Implementation of the Unicode Bidirectional Algorithm.
   description: |
@@ -49,3 +42,4 @@ extra:
   recipe-maintainers:
     - msarahan
     - mariusvniekerk
+    - h-vetinari
