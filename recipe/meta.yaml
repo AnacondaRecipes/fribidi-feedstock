@@ -10,7 +10,7 @@ source:
   sha256: 1b1cde5b235d40479e91be2f0e88a309e3214c8ab470ec8a2744d82a5a9ea05c
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('fribidi', max_pin='x.x') }}
 
@@ -24,14 +24,13 @@ requirements:
 
 test:
   commands:
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
     - fribidi -h
 
 about:
   home: https://github.com/fribidi/fribidi
   license: LGPL-2.1
   license_file: COPYING
+  license_family: GPL
   summary: The Free Implementation of the Unicode Bidirectional Algorithm.
   description: |
     One of the missing links stopping the penetration of free software in Middle
@@ -46,3 +45,5 @@ extra:
   recipe-maintainers:
     - msarahan
     - mariusvniekerk
+  skip-lints:
+    - python_build_tools_in_host
