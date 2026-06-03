@@ -15,12 +15,11 @@ build:
     - {{ pin_subpackage('fribidi', max_pin='x.x') }}
 
 requirements:
-  host:
-    - meson
-    - ninja-base
   build:
     - {{ stdlib('c') }}
     - {{ compiler('c') }}
+    - meson
+    - ninja-base
     - pkg-config  # [unix]
 
 test:
@@ -46,3 +45,5 @@ extra:
   recipe-maintainers:
     - msarahan
     - mariusvniekerk
+  skip-lints:
+    - python_build_tools_in_host
